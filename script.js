@@ -62,4 +62,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // --- LÓGICA PARA MENU MOBILE ---
+    // Seleciona elementos do menu mobile
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    const mainNavLinks = document.querySelectorAll('.main-nav a'); // Seleciona todos os links do menu
+
+    if (mobileNavToggle) {
+        mobileNavToggle.addEventListener('click', () => {
+            // Alterna a classe no menu para mostrar/esconder
+            mainNav.classList.toggle('nav-open');
+            
+            // Alterna a classe no próprio botão para a animação do ícone
+            mobileNavToggle.classList.toggle('nav-open');
+
+            // Impede ou permite o scroll do body
+            if (mainNav.classList.contains('nav-open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+
+    // Fecha o menu mobile quando um link é clicado
+    mainNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (mainNav.classList.contains('nav-open')) {
+                mainNav.classList.remove('nav-open');
+                mobileNavToggle.classList.remove('nav-open');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+
 });

@@ -65,11 +65,11 @@ body {
     color: var(--color-text-dark);
 }
 
-/* --- CABEÇALHO --- */
+/* --- CABEÇALHO (Otimizado para Mobile) --- */
 .header {
     background-color: rgba(249, 247, 240, 0.8);
     backdrop-filter: blur(10px);
-    padding: 5px 0;
+    padding: 5px 0; /* Aumentei um pouco o padding vertical para dar mais respiro */
     position: fixed;
     width: 100%;
     top: 0;
@@ -88,6 +88,13 @@ body {
     font-size: 24px;
     font-weight: 700;
     color: var(--color-primary-gold);
+    z-index: 1001; /* Garante que o logo fique acima do menu aberto */
+}
+
+/* Estilos da Navegação para Desktop */
+.main-nav {
+    display: flex;
+    align-items: center;
 }
 
 .nav-link {
@@ -117,6 +124,107 @@ body {
 .header-cta {
     margin-left: 25px;
     padding: 8px 20px;
+}
+
+/* --- ESTILOS DO MENU MOBILE --- */
+.mobile-nav-toggle {
+    display: none; /* Escondido por padrão no desktop */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.hamburger-icon {
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-text-dark);
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-text-dark);
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger-icon::before {
+    top: -8px;
+}
+
+.hamburger-icon::after {
+    top: 8px;
+}
+
+/* Animação do ícone para "X" quando o menu está aberto */
+.nav-open .hamburger-icon {
+    background-color: transparent; /* A linha do meio some */
+}
+
+.nav-open .hamburger-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.nav-open .hamburger-icon::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.nav-open .logo {
+    color: var(--color-text-light); /* Muda a cor do logo para contrastar com o fundo */
+}
+
+.nav-open .hamburger-icon::before,
+.nav-open .hamburger-icon::after {
+    background-color: var(--color-text-light);
+}
+
+/* Media Query para ativar o menu mobile */
+@media (max-width: 768px) {
+    .main-nav {
+        position: fixed;
+        inset: 0; /* Equivalente a top, bottom, left, right = 0 */
+        background-color: var(--color-secondary-green);
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        transform: translateX(100%); /* Começa fora da tela */
+        transition: transform 0.4s ease-in-out;
+    }
+
+    .main-nav.nav-open {
+        transform: translateX(0); /* Entra na tela quando a classe é adicionada */
+    }
+
+    .main-nav .nav-link,
+    .main-nav .header-cta {
+        display: block;
+        margin: 0;
+        color: var(--color-text-light);
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .main-nav .header-cta {
+        background-color: var(--color-primary-gold);
+        padding: 12px 28px;
+    }
+
+    .nav-link::after { /* Remove o sublinhado no mobile */
+        display: none;
+    }
+
+    .mobile-nav-toggle {
+        display: block; /* Mostra o botão do hambúrguer */
+    }
 }
 
 /* --- SEÇÃO HERO --- */
