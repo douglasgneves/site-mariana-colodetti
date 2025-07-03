@@ -1,0 +1,463 @@
+/* style.css */
+
+/* --- VARIÁVEIS DE COR E FONTES (O MANUAL DA MARCA EM CÓDIGO) --- */
+:root {
+    --color-primary-gold: #BC9D6D;
+    --color-secondary-green: #8BC694;
+    --color-tertiary-yellow: #F1EB9C;
+    --color-quaternary-blue: #79ACD3;
+    
+    --color-text-dark: #3a3a3a;
+    --color-text-light: #fdfdfd;
+    --color-bg-light: #f9f7f0;
+    --color-bg-section: #FFFFFF;
+
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+/* --- RESET BÁSICO E CONFIGURAÇÕES GLOBAIS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg-light);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- ESTILOS DE COMPONENTES REUTILIZÁVEIS --- */
+.cta-button {
+    display: inline-block;
+    background-color: var(--color-primary-gold);
+    color: var(--color-text-light);
+    padding: 12px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #a5895a;
+    transform: translateY(-3px);
+}
+
+.section-title {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    margin-bottom: 50px;
+    color: var(--color-text-dark);
+}
+
+/* --- CABEÇALHO --- */
+.header {
+    background-color: rgba(249, 247, 240, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 5px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(188, 157, 109, 0.2);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-primary-gold);
+}
+
+.nav-link {
+    margin-left: 25px;
+    text-decoration: none;
+    color: var(--color-text-dark);
+    font-weight: 400;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-primary-gold);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.header-cta {
+    margin-left: 25px;
+    padding: 8px 20px;
+}
+
+/* --- SEÇÃO HERO --- */
+.hero {
+    background-color: var(--color-secondary-green);
+    color: var(--color-text-light);
+    padding: 180px 0 120px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    line-height: 1.2;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.hero p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+.hero-circle-1, .hero-circle-2 {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.08);
+    z-index: 1;
+}
+.hero-circle-1 {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    left: -150px;
+}
+.hero-circle-2 {
+    width: 300px;
+    height: 300px;
+    bottom: -120px;
+    right: -100px;
+}
+
+/* --- SEÇÃO FILOSOFIA --- */
+.philosophy {
+    padding: 80px 0;
+}
+
+.philosophy .container {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.philosophy-card {
+    text-align: center;
+    max-width: 300px;
+}
+
+.icon-wrapper {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-wrapper svg {
+    stroke: white;
+    width: 32px;
+    height: 32px;
+}
+
+.philosophy-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-primary-gold);
+    margin-bottom: 10px;
+}
+
+/* --- SEÇÃO DOUTORA --- */
+.doctor-section {
+    padding: 80px 0;
+    background-color: var(--color-bg-section);
+}
+
+.doctor-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.doctor-image img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 8px solid var(--color-secondary-green);
+}
+
+.doctor-bio h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-text-dark);
+    margin-bottom: 20px;
+}
+
+.doctor-bio ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 20px 0;
+}
+
+.doctor-bio li {
+    padding-left: 25px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.doctor-bio li::before {
+    content: '✓';
+    color: var(--color-primary-gold);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.quote {
+    font-style: italic;
+    border-left: 3px solid var(--color-primary-gold);
+    padding-left: 15px;
+    margin-top: 20px;
+}
+
+/* --- NOVA SEÇÃO GALERIA --- */
+.gallery-section {
+    padding: 80px 0;
+    background-color: var(--color-bg-light);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.gallery-item {
+    background: var(--color-bg-section);
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(188, 157, 109, 0.15);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item p {
+    padding: 20px;
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+
+/* --- SEÇÃO SERVIÇOS --- */
+.services-section {
+    padding: 80px 0;
+    background-color: var(--color-bg-section); /* Alternando cor de fundo */
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.service-card {
+    background: var(--color-bg-light); /* Fundo um pouco diferente */
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid rgba(188, 157, 109, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+}
+
+.service-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--color-primary-gold);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.service-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--color-secondary-green);
+}
+
+.service-card ul {
+    list-style: none;
+}
+
+.service-card li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.service-card li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary-gold);
+}
+
+
+/* --- SEÇÃO CTA FINAL --- */
+.final-cta-section {
+    padding: 100px 0;
+    background-color: var(--color-secondary-green);
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+.contact-content h2 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.contact-content p {
+    max-width: 650px;
+    margin: 0 auto 30px auto;
+    font-weight: 300;
+}
+
+.contact-info {
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+.contact-info p {
+    margin-bottom: 5px;
+}
+
+.contact-link {
+    color: var(--color-text-light);
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
+}
+.contact-link:hover {
+    text-decoration: underline;
+}
+
+/* --- RODAPÉ --- */
+.footer {
+    background-color: #3f4a43;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* --- ANIMAÇÕES DE SCROLL --- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .header nav { display: flex; flex-wrap: wrap; justify-content: center; }
+    
+    .hero h1 { font-size: 2.5rem; }
+    .hero p { font-size: 1rem; }
+    
+    .philosophy .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .doctor-container {
+        flex-direction: column-reverse; /* Inverte a ordem no mobile também */
+        align-items: center;
+        gap: 50px;
+    }
+
+    .doctor-image img { width: 280px; height: 280px; }
+    
+    .gallery-grid { grid-template-columns: 1fr; } /* Galeria vira coluna única */
+
+    .services-grid { grid-template-columns: 1fr; }
+    
+    .final-cta-section h2 { font-size: 2.2rem; }
+}
